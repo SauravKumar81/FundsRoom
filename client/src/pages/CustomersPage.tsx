@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import type { Customer, CustomerFollowUp } from '../types';
+import type { Customer, Tab } from '../types';
 import { CustomerModal } from '../components/CustomerModal';
-import { Search, Plus, Filter, X, ChevronLeft, ChevronRight, Clock, MessageSquare } from 'lucide-react';
+import { Search, Plus, Filter, ChevronLeft, ChevronRight, Clock, MessageSquare } from 'lucide-react';
 
 interface CustomersPageProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: Tab) => void;
 }
 
-export const CustomersPage: React.FC<CustomersPageProps> = ({ setActiveTab }) => {
+export const CustomersPage: React.FC<CustomersPageProps> = ({ setActiveTab: _setActiveTab }) => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');

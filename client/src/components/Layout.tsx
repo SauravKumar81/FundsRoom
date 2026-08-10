@@ -1,8 +1,7 @@
 import React from 'react';
 import { Navbar } from './Navbar';
 import { Sidebar } from './Sidebar';
-
-type Tab = 'dashboard' | 'customers' | 'products' | 'challans' | 'logs';
+import type { Tab } from '../types';
 
 interface LayoutProps {
   activeTab: Tab;

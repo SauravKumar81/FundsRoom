@@ -1,13 +1,14 @@
 import React from 'react';
 import { LayoutDashboard, Users, Package, FileText, History } from 'lucide-react';
+import type { Tab } from '../types';
 
 interface SidebarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab: Tab;
+  setActiveTab: (tab: Tab) => void;
 }
 
 export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => {
-  const menuItems = [
+  const menuItems: { id: Tab; label: string; icon: React.FC<{ size?: number; color?: string }> }[] = [
     { id: 'dashboard', label: 'Dashboard Overview', icon: LayoutDashboard },
     { id: 'customers', label: 'Customer CRM', icon: Users },
     { id: 'products', label: 'Products & Inventory', icon: Package },

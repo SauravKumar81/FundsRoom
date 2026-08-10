@@ -1,3 +1,5 @@
+export type Tab = 'dashboard' | 'customers' | 'products' | 'challans' | 'logs';
+
 export type UserRole = 'Admin' | 'Sales' | 'Warehouse' | 'Accounts';
 
 export interface User {

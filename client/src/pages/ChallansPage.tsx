@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import type { SalesChallan } from '../types';
+import type { SalesChallan, Tab } from '../types';
 import { ChallanModal } from '../components/ChallanModal';
-import { Search, Plus, ChevronLeft, ChevronRight, FileText, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
+import { Search, Plus, ChevronLeft, ChevronRight, CheckCircle, XCircle } from 'lucide-react';
 
 interface ChallansPageProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: Tab) => void;
 }
 
-export const ChallansPage: React.FC<ChallansPageProps> = ({ setActiveTab }) => {
+export const ChallansPage: React.FC<ChallansPageProps> = ({ setActiveTab: _setActiveTab }) => {
   const [challans, setChallans] = useState<SalesChallan[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');

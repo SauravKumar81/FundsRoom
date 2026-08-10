@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import type { StockMovementLog } from '../types';
+import type { StockMovementLog, Tab } from '../types';
 import { Search, Filter, History } from 'lucide-react';
 
 interface StockLogsPageProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: Tab) => void;
 }
 
-export const StockLogsPage: React.FC<StockLogsPageProps> = ({ setActiveTab }) => {
+export const StockLogsPage: React.FC<StockLogsPageProps> = ({ setActiveTab: _setActiveTab }) => {
   const [logs, setLogs] = useState<StockMovementLog[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');

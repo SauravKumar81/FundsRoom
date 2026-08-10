@@ -5,16 +5,6 @@ import { LogOut, User as UserIcon, ShieldCheck, Box } from 'lucide-react';
 export const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
 
-  const getRoleColor = (role?: string) => {
-    switch (role) {
-      case 'Admin': return 'bg-purple-100 text-purple-800 border-purple-200';
-      case 'Sales': return 'bg-blue-100 text-blue-800 border-blue-200';
-      case 'Warehouse': return 'bg-amber-100 text-amber-800 border-amber-200';
-      case 'Accounts': return 'bg-emerald-100 text-emerald-800 border-emerald-200';
-      default: return 'bg-gray-100 text-gray-800';
-    }
-  };
-
   return (
     <header style={{
       height: '64px',

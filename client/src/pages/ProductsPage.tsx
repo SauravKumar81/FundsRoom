@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import type { Product, StockMovementLog } from '../types';
+import type { Product, StockMovementLog, Tab } from '../types';
 import { ProductModal } from '../components/ProductModal';
 import { StockAdjustmentModal } from '../components/StockAdjustmentModal';
-import { Search, Plus, Filter, AlertTriangle, ChevronLeft, ChevronRight, ArrowUpDown, Eye, Edit, Package } from 'lucide-react';
+import { Search, Plus, Filter, AlertTriangle, ChevronLeft, ChevronRight, ArrowUpDown, Eye, Edit } from 'lucide-react';
 
 interface ProductsPageProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: Tab) => void;
 }
 
-export const ProductsPage: React.FC<ProductsPageProps> = ({ setActiveTab }) => {
+export const ProductsPage: React.FC<ProductsPageProps> = ({ setActiveTab: _setActiveTab }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { api } from '../services/api';
-import type { Customer, Product, SalesChallan } from '../types';
-import { Users, Package, FileText, AlertTriangle, ArrowUpRight, TrendingUp } from 'lucide-react';
+import type { Customer, Product, SalesChallan, Tab } from '../types';
+import { Users, Package, FileText, AlertTriangle, ArrowUpRight } from 'lucide-react';
 
 interface DashboardPageProps {
-  setActiveTab: (tab: string) => void;
+  setActiveTab: (tab: Tab) => void;
 }
 
 export const DashboardPage: React.FC<DashboardPageProps> = ({ setActiveTab }) => {
@@ -36,9 +36,6 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ setActiveTab }) =>
   const lowStockCount = products.filter(p => p.currentStock <= p.minStockAlert).length;
   const activeCustomers = customers.filter(c => c.status === 'Active').length;
   const confirmedChallans = challans.filter(c => c.status === 'Confirmed').length;
-  const totalRevenue = challans
-    .filter(c => c.status === 'Confirmed')
-    .reduce((sum, c) => sum + c.totalAmount, 0);
 
   if (loading) {
     return <div style={{ padding: '32px' }}>Loading portal dashboard...</div>;
@@ -202,7 +199,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({ setActiveTab }) =>
                     borderRadius: 'var(--rounded-md)',
                     border: '1px solid #fee2e2',
                     display: 'flex',
-                    justify: 'space-between',
+                    justifyContent: 'space-between',
                     alignItems: 'center'
                   }}
                 >

@@ -7,8 +7,7 @@ import { ProductsPage } from './pages/ProductsPage';
 import { ChallansPage } from './pages/ChallansPage';
 import { StockLogsPage } from './pages/StockLogsPage';
 import { Layout } from './components/Layout';
-
-type Tab = 'dashboard' | 'customers' | 'products' | 'challans' | 'logs';
+import type { Tab } from './types';
 
 const PageComponents: Record<Tab, React.FC<{ setActiveTab: (tab: Tab) => void }>> = {
   dashboard: DashboardPage,
