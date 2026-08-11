@@ -5,9 +5,10 @@
   "main": "dist/app.js",
   "scripts": {
     "dev": "tsx watch src/app.ts",
-    "build": "tsc",
-    "start": "node dist/app.js",
-    "seed": "tsx src/prisma/seed.ts"
+    "build": "prisma generate && prisma db push && tsc",
+    "start": "prisma db push && tsx src/prisma/seed.ts && node dist/app.js",
+    "seed": "tsx src/prisma/seed.ts",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@prisma/client": "^5.22.0",

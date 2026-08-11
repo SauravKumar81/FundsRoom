@@ -25,6 +25,12 @@ async function main() {
   }
   console.log('✅ Users seeded: admin@fundsroom.com, sales@fundsroom.com, warehouse@fundsroom.com, accounts@fundsroom.com (Password: Password123!)');
 
+  const customerCount = await prisma.customer.count();
+  if (customerCount > 0) {
+    console.log('✅ Database already populated. Skipping duplicate seeding.');
+    return;
+  }
+
   // 2. Seed Customers
   const customer1 = await prisma.customer.create({
     data: {

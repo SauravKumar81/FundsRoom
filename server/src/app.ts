@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import { execSync } from 'child_process';
 import dotenv from 'dotenv';
 import authRoutes from './routes/authRoutes';
 import customerRoutes from './routes/customerRoutes';
@@ -8,6 +9,16 @@ import challanRoutes from './routes/challanRoutes';
 import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
+
+// Ensure Database Schema is pushed and seeded in deployed environments
+try {
+  console.log('🔄 Checking database schema and seeding...');
+  execSync('npx prisma db push', { stdio: 'inherit' });
+  execSync('npx tsx src/prisma/seed.ts', { stdio: 'inherit' });
+  console.log('✅ Database initialization complete.');
+} catch (err) {
+  console.warn('⚠️ Automated database push/seed skipped or failed:', err);
+}
 
 const app = express();
 const PORT = process.env.PORT || 5000;
